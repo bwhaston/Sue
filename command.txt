@@ -1,1 +1,1 @@
-for i in range(0, 9):
+# Delete this text and put in your own commands, based off of the syntax described in the readme.
