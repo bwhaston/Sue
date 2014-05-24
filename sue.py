@@ -1,43 +1,50 @@
 def userForLoop(lst):
+    '''
+    This function parses out the list that is created for each line in main(). After parsing, it outputs a valid Python
+    For-loop to commandOutput.py
+    '''
     rangeBegin = lst[-3]
     rangeEnd  = lst[-1]
     iterator = lst[1]
 
     printedCommand = "for "+ iterator + " in range(" + rangeBegin + ", " + rangeEnd + "):\n"
-    print("printedCommand is", printedCommand)
 
-    commandText = open("command.py", "a")
+    commandText = open("commandOutput.py", "a")
     commandText.write(printedCommand)
     commandText.close()
 
 def userPrint(lst):
     '''
-    The main problem that I'm facing with this function is that it doesn't format string arguments
-    correctly when they are larger than a single string. I also need to eventually implement a way
-    for this userPrint function to concatenate arguments.
+    Currently having an issue with this function where it adds a superfluous space to the end of the string to be printed
+    out. I know that it's an easy fix, but baby steps. What's worrying me the most is that this function is only good at 
+    parsing out string arguments. It is currently not suited to print out arguments that are concatenated. Only use a
+    single string at this point in Sue's life.
     '''
     printArgStr = ""
     printArgList = lst[1:]
     for each in printArgList:
         printArgStr = printArgStr + each + " "
-    print(printArgStr)
-        
 
-    
     printedOut = "print(" + '"' + printArgStr + '"' + ")"
-    commandText = open("command.py", "a")
+    commandText = open("commandOutput.py", "a")
     commandText.write(printedOut)
     commandText.close()
     
 def tab():
+    '''
+    This function is simple enough to not worry about. It works fine. It adds a tab of four spaces whenever the input for 
+    Sue has a '{' in it.
+    '''
     tab = "    "
-    commandText = open("command.py", "a")
+    commandText = open("commandOutput.py", "a")
     commandText.write(tab)
     commandText.close()
     
-
-
 def main():
+    '''
+    Here we have the main function, where input is taken from commandInput.txt, and is then split into lists to be parsed
+    by the other functions that comprise Sue.
+    '''
     commandList = []
 
     userInput = open("commandInput.txt","r")
@@ -47,28 +54,12 @@ def main():
         while not lineTerminate:
             commandList = aline.split()
             print("commandList is", commandList)
-            if (commandList[0] == "iterate"):
+            if (commandList[0].lower() == "iterate"):
                 userForLoop(commandList)
-            elif(commandList[0] == "print"):
+            elif(commandList[0].lower() == "print"):
                 userPrint(commandList)
             elif(commandList[0] == "{"):
                 tab()
             lineTerminate = True
-
-
-    
-
-    if (commandList[0] == "end"):
-        return False
-    else:
-        return True
-programming = True
-
-def control():
-    while programming:
-        main()
-        if main() == False:
-            programming = False
-
 
 main()
