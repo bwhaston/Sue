@@ -62,12 +62,12 @@ The function that takes care of printing could use work. Further descriptions of
 
 Tabbing:
 
-Tabbing is the way that scope is shown in Python, so there has to be a way for Sue to make tabs if the resulting Python program is to function. All that you need to do to add a tab in the final Python program is to add a line in your input that is only a right bracket ("{"). This will be parsed by Sue and will result in a tab wherever you need to delineate scope. No closing bracket is needed, but, if it would make your life easier, you can add a closing brace wherever you want, and Sue will ignore it.
+Tabbing is the way that scope is shown in Python, so there has to be a way for Sue to make tabs if the resulting Python program is to function. All that you need to do to add a tab in the final Python program is to add a line in your input that is only a left bracket ("{"). This will be parsed by Sue and will result in a tab wherever you need to delineate scope. No closing bracket is needed, but, if it would make your life easier, you can add a closing brace wherever you want, and Sue will ignore it.
 
 
 Commenting:
 
-  Commenting at this point in Sue's life is very free-form. In the same way that a left bracket will simply be ignored by Sue, any line of text in commandInput.txt that does not begin with one of the currently recognized keywords will be ignored. At this point, to make things easier, I would recommend that you follow Python's commentig syntax and use a "#" before your comment. This will be ignored by Sue (given that "#" is not a keyword) and will also serve as aid for the user.
+  Commenting at this point in Sue's life is very free-form. In the same way that a right bracket will simply be ignored by Sue, any line of text in commandInput.txt that does not begin with one of the currently recognized keywords will be ignored. At this point, to make things easier, I would recommend that you follow Python's commentig syntax and use a "#" before your comment. This will be ignored by Sue (given that "#" is not a keyword) and will also serve as aid for the user.
 
 
 
