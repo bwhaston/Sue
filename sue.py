@@ -39,6 +39,33 @@ def tab():
     commandText = open("commandOutput.py", "a")
     commandText.write(tab)
     commandText.close()
+
+def declare(lst):
+    '''
+    This is also a pretty straight-forwared function. Basic syntax is as follows:
+    declare variable [variableName] as a [data type]
+    Sue will parse that input and output a valid Python declaration statement. Variable names follow the same conventions in Sue as they do in
+    Python.
+    '''
+    variableType = 0
+    variableName = lst[2]
+
+    if (lst[-1].lower() == "string"):
+        variableType = '""\n'
+    elif (lst[-1].lower() == "list"):
+        variableType = "[]\n"
+    elif (lst[-1].lower() == "dictionary"):
+        variableType == "{}\n"
+    elif (lst[-1].lower() == "integer"):
+        variableType = "0\n"
+    elif (lst[-1].lower() == "float"):
+        variableType = "0\n"
+
+    declaration = variableName + " = " + variableType
+
+    commandText = open("commandOutput.py", "a")
+    commandText.write(declaration)
+    commandText.close()
     
 def main():
     '''
@@ -58,6 +85,8 @@ def main():
                 userForLoop(commandList)
             elif(commandList[0].lower() == "print"):
                 userPrint(commandList)
+            elif(commandList[0].lower() == "declare"):
+                declare(commandList)
             elif(commandList[0] == "{"):
                 tab()
             lineTerminate = True
