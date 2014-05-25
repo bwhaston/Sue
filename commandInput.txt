@@ -1,5 +1,6 @@
 declare variable num as an integer
 iterate i over a range between 0 and 100
+{
 print hello world
 }
 # This is a comment. Sue will ignore this line. Sue will also ignore that closing bracket.
