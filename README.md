@@ -6,7 +6,7 @@ Pseudocode-to-Python translator
 
   Hello! Welcome to Sue, the pseudocode-to-Python translator. The goal of this project is to create a wrapper around Python that allows the use of natural language inputs to produce working Python programs.
 
-  At this time, there is very little functionality in Sue. What works is a limited For-loop construction, a print function, and a tabbing function. Stay tuned for more features.
+  At this time, there is very little functionality in Sue. What works is a limited For-loop construction, a print function, a variable declaration function, and a tabbing function. Stay tuned for more features.
   
   
 
@@ -59,6 +59,19 @@ print [string]
 
 The function that takes care of printing could use work. Further descriptions of what's wrong with this Sue feature are further described in sue.py.
 
+Variable Declaration:
+
+Syntax:
+
+declare variable [variableName] as a [data type]
+
+An example of this would be: declare variable num as an integer.
+
+Again, as long as the parsed input has the right keywords at the rigth places, then Sue will execute the command correctly.
+
+Start the declaration statement with keyword "declare" (again, not case-sensitive) and then have the variable name at lst[2] and have the variable data type at lst[-1].
+
+Potential input for the declaration statement: declare var num integer
 
 Tabbing:
 
