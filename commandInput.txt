@@ -1,5 +1,5 @@
 declare variable num as an integer
-iterate i range over a range between 0 and 1123
+iterate i over a range between 0 and 1123
 {
 print hello world
 }
