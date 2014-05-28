@@ -1,6 +1,15 @@
-declare variable num as an integer
+declare variable num value to 10
 iterate i over a range between 0 and 100
+{
+iterate j over a range between 100 and 200
+{
+iterate k over a range between 200 and 300
 {
 print hello world
 }
+}
+}
+iterate i over a range between 300 and 400
+{
+print does this work?
 # This is a comment. Sue will ignore this line. Sue will also ignore that closing bracket.
