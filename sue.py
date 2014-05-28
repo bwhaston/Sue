@@ -32,8 +32,9 @@ def userPrint(lst):
     
 def tab(count):
     '''
-    This function is simple enough to not worry about. It works fine. It adds a tab of four spaces whenever the input for 
-    Sue has a '{' in it.
+    This function is simple enough to not worry about. It works fine. It adds however many tabs are required for the current scope when a "{" is
+    found in Sue source code. Also, integer parameter count is incremented by one whenever Sue sees a "{". count is then decremented by one
+    each time Sue finds a "}". Make sure your bracket counts match up with each other, or there will be issues with scope.
     '''
     
     
