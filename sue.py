@@ -25,47 +25,70 @@ def userPrint(lst):
     for each in printArgList:
         printArgStr = printArgStr + each + " "
 
-    printedOut = "print(" + '"' + printArgStr + '"' + ")"
+    printedOut = "print(" + '"' + printArgStr + '"' + ")\n"
     commandText = open("commandOutput.py", "a")
     commandText.write(printedOut)
     commandText.close()
     
-def tab():
+def tab(count):
     '''
     This function is simple enough to not worry about. It works fine. It adds a tab of four spaces whenever the input for 
     Sue has a '{' in it.
     '''
-    tab = "    "
+    
+    
+    tab = "    " * count
     commandText = open("commandOutput.py", "a")
     commandText.write(tab)
     commandText.close()
 
-def declare(lst):
+def declareAssign(lst):
     '''
     This is also a pretty straight-forwared function. Basic syntax is as follows:
     declare variable [variableName] as a [data type]
     Sue will parse that input and output a valid Python declaration statement. Variable names follow the same conventions in Sue as they do in
     Python.
     '''
-    variableType = 0
+    variableValue = 0
     variableName = lst[2]
 
     if (lst[-1].lower() == "string"):
-        variableType = '""\n'
+        variableValue = '""'
     elif (lst[-1].lower() == "list"):
-        variableType = "[]\n"
+        variableValue = "[]"
     elif (lst[-1].lower() == "dictionary"):
-        variableType == "{}\n"
+        variableValue == "{}"
     elif (lst[-1].lower() == "integer"):
-        variableType = "0\n"
+        variableValue = "0"
     elif (lst[-1].lower() == "float"):
-        variableType = "0\n"
+        variableValue = "0"
+    elif (type(int(lst[-1])) is int):
+          variableValue = int(lst[-1])
+    #elif (type(lst[-1]) is in
+          '''
+    2014/5/26: The current goal that I have in mind for line 63 is to have the type lst[-1] be
+    evaluated so that a variable can be declared with a value rather than with only initialized with
+    a dummy value (like 0 for ints and floats and empty lists/dicts/tuples.) I feel like I'm just starting
+    to write error-prone code with these increasingly-complex conditional statments. There has to be
+    a better way to right this, or, at least, I surely hope there is. I get the distinct feeling that this is
+    not very Pythonic, and I also get the feeling that it just plain isn't very good code. It just _looks_
+    messy. For now, though, it does what I want it: I can set any integer value to whatever variable
+    I want. I would like to do what I can to clean up this function. Maybe I could split the duties
+    that are taken care of in this funtion and divvy them out to other functions, or maybe that will
+    just be another avenue for error-prone code.
 
-    declaration = variableName + " = " + variableType
+    Another goal is to implement a way for variables to be manipulated as objects (such as using
+    variable values as iterables. I would ilke there to be a way to pass a variable holding an iterable
+    value like a list to a for loop. I will need to meditate on this some more, but for now, I need sleep.
+
+    declaration = variableName + " = " + str(variableValue) + "\n"
 
     commandText = open("commandOutput.py", "a")
     commandText.write(declaration)
     commandText.close()
+
+
+    '''
     
 def main():
     '''
@@ -75,6 +98,14 @@ def main():
     commandList = []
 
     userInput = open("commandInput.txt","r")
+
+    tabCount = 0
+
+    '''
+    Integer variable tabCount will be incremented by one each time there is a "{" in the Sue source code. The value
+    of tabCount will correspond to the amount of tabs required at the point in the code one is at.
+
+    '''
 
     for aline in userInput:
         lineTerminate = False
@@ -86,9 +117,14 @@ def main():
             elif(commandList[0].lower() == "print"):
                 userPrint(commandList)
             elif(commandList[0].lower() == "declare"):
-                declare(commandList)
+                declareAssign(commandList)
             elif(commandList[0] == "{"):
-                tab()
+                tabCount += 1
+                tab(tabCount)
+            elif (commandList[0] == "}"):
+                tabCount -= 1
             lineTerminate = True
+
+    print(tabCount)
 
 main()
