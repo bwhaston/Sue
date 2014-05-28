@@ -75,7 +75,7 @@ Potential input for the declaration statement: declare var num integer
 
 Tabbing:
 
-Tabbing is the way that scope is shown in Python, so there has to be a way for Sue to make tabs if the resulting Python program is to function. All that you need to do to add a tab in the final Python program is to add a line in your input that is only a left bracket ("{"). This will be parsed by Sue and will result in a tab wherever you need to delineate scope. No closing bracket is needed, but, if it would make your life easier, you can add a closing brace wherever you want, and Sue will ignore it.
+Tabbing is the way that scope is shown in Python, so there has to be a way for Sue to make tabs if the resulting Python program is to function. All that you need to do to add a tab in the final Python program is to add a line in your input that is only a left bracket ("{"). This will be parsed by Sue and will result in a tab wherever you need to delineate scope (if you look at the code for the tabbing function, then you'll see that the function acounts for the number of tabs needed as well.) In order to take yourself out of the current scope, use "}". Make sure the number of left and right brackes match so that you don't have issues with scope.
 
 
 Commenting:
